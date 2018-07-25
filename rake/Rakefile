@@ -1,0 +1,10 @@
+require 'ci/reporter/rake/minitest'
+require 'rake/testtask'
+task :default => :autotest
+Rake::TestTask.new :autotest do |t|
+  files = FileList['../testcase/*/*.rb',
+				   '../testcase/*/*/*.rb',]
+  t.libs << "."
+  t.test_files = files
+  t.verbose = false
+end
